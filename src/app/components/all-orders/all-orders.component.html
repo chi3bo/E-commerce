@@ -1,0 +1,49 @@
+<section class="py-5">
+
+    <h2>My Orders :</h2>
+
+    <div class="row bg-light my-3  product p-2" *ngFor="let item of myOrders">
+
+        <div class="col-md-3 ">
+            <div class="  d-flex justify-content-center align-items-center flex-wrap h-100 p-3 border-end ">
+                <img *ngFor="let product of item.cartItems" [src]="product.product.imageCover" alt=""
+                    class="col-4 rounded border">
+            </div>
+        </div>
+
+
+
+        <div class="col-md-9">
+            <div class="row px-3">
+                
+                <div class="col-md-6 border-end ">
+                    <p class="h3 text-center border-bottom py-2 "> order details </p>
+
+                    <div >
+                        <div class="names border rounded p-1 w-100 mt-4">
+                            <p class="h6 smallName" *ngFor="let product of item.cartItems ">{{
+                                product.product.title.split(' ' , 2).join( " " ) }} </p>
+                        </div>
+                        <p>{{item.createdAt | date}}</p>
+                        <p>{{item.totalOrderPrice | currency : ' EGP '}}</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <p class="h3 text-center border-bottom py-2"> shipping to : </p>
+                    <div class="p-5 h-100">
+                        <p> <span class="fw-bolder">name : </span>{{item.user.name}}</p>
+                        <p> <span class="fw-bolder">adress details : </span>{{item.shippingAddress.details}}</p>
+                        <p> <span class="fw-bolder">city : </span>{{item.shippingAddress.city}}</p>
+                        <p> <span class="fw-bolder">phone : </span>{{item.shippingAddress.phone}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>

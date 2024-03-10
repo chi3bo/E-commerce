@@ -1,0 +1,20 @@
+.itmeBtn{
+    position: relative;
+    top: 80px;
+transition: all .5s;
+}
+
+
+.item:hover{
+    box-shadow: 0 0 10px #11bd1168;
+}
+.item{
+    transition: all .3s;
+    overflow: hidden;
+}
+
+
+.productCard:hover .itmeBtn{
+top: 0;
+}
+

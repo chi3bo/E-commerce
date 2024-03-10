@@ -1,0 +1,27 @@
+
+
+name
+required
+"must be at least 3 chars"
+ Validators.minLength(3)  , Validators.maxLength(20)
+ Name Min Length 3
+ Name Max Length 20
+---
+email
+email InValid Format
+---
+password
+required
+"must be at least 6 chars"
+ Validators.pattern(/^\w{6,}$/)
+ 
+ password must start with upperCase then from 6 to 10
+  Validators.pattern(/^\[A-Z][a-z0-9]{6,10}$/)
+---
+rePassword
+"Password confirmation is incorrect"
+---
+phone
+required
+"accept only egypt phone numbers"
+Validators.pattern(/^01[0125][0-9]{8}$/)

@@ -1,0 +1,48 @@
+<section class="w-75 bg-light p-4 mx-auto my-5 rounded">
+
+
+    <h2> Login now :</h2>
+
+    <form [formGroup]="loginForm" (submit)="submitLogin()">
+
+
+
+        <div class="py-2">
+            <label for="userEmail"> userEmail </label>
+            <input #emailId type="text" class="form-control " formControlName="email" id="userEmail">
+            <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || emailId.value.length > 0) "
+                class="alert-danger alert pb-0 ">
+                <p *ngIf="loginForm.get('email')?.getError('required')">Email is reqiured</p>
+                <p *ngIf="loginForm.get('email')?.getError('email')">Email must be valid</p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label for="userName"> Password </label>
+            <input #passId type="text" class="form-control " formControlName="password" id="userPass">
+            <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || passId.value.length > 0) "
+                class="alert-danger alert pb-0 ">
+                <p *ngIf="loginForm.get('password')?.getError('required')">Password is reqiured</p>
+                <p *ngIf="loginForm.get('password')?.getError('pattern')">Password must be at least 6 chars</p>
+            </div>
+        </div>
+
+
+        <div *ngIf="falseAccount" class="alert alert-danger pb-0 text-center m-3">
+            <p> {{errorMsg}} </p>
+        </div>
+
+        <button class="btn-main py-2  d-block ms-auto">
+
+            <span *ngIf="spinner">
+                <i class="fa-solid fa-spinner fa-spin fa-xl"></i>
+            </span>
+            Login 
+
+        </button>
+
+        <p class="h4 fw-bolder cursor-pointer forgot"> forgot your password ?</p>
+
+    </form>
+
+</section>

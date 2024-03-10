@@ -1,0 +1,56 @@
+<section class="mb-5">
+
+    <div class="row">
+        <div class="mx-auto col-md-6 ">
+            <div class="py-3 pt-5">
+                <input [(ngModel)]="searchValue" type="search" class="form-control shadow" placeholder="search ...">
+                <p>{{searchValue}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div *ngFor=" let item of productsList | searching:searchValue "
+            class="productCard col-lg-3 col-md-4 col-sm-6 overflow-hidden">
+
+            <div class="item border rounded-1 p-2 ">
+
+                <div [routerLink]="['/details' , item._id]">
+                    <img [src]="item.imageCover" width="100%" [alt]="item.title">
+                    <div class="upTitle d-flex justify-content-between">
+                        <p class="h5 pt-1  m-0">{{item.title.split(' ' , 2).join(' ')}} </p>
+
+
+                    </div>
+                    <p class="small p-0 m-0 smallName">{{item.category.name}}</p>
+                    <div class="d-flex justify-content-between pt-2 pb-1">
+                        <p class="m-0">{{item.price | currency }}</p>
+                        <div>
+                            <p class="m-0"> <i class="fa-solid fa-star rating-color"></i> {{item.ratingsAverage}} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="itemFooter d-flex align-items-center">
+                    <button (click)="addItemToCart(item._id)" class="btn-main addBtn itmeBtn mx-auto ">
+                        <i class="fa-solid fa-cart-shopping"></i> add to cart
+                    </button>
+                    <div class="whishList mx-auto ">
+                        <span #heart [ngClass]="{ 'icon-active' : wishIdes.includes(item._id) ,
+                                    'icon-muted' : wishIdes.includes(item._id)==false }"
+                            (click)="addToWishlist(item.id , heart   )">
+                            <i class="fa-solid fa-heart fa-xl "></i>
+                        </span>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>

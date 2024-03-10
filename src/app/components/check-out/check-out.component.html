@@ -1,0 +1,48 @@
+<section class="w-75 p-4 mx-auto bg-light my-5 rounded">
+
+
+    <h2> complete order details :</h2>
+
+
+    <form [formGroup]="checkOutForm" (ngSubmit)="checkOut()" class=" rounded py-4 px-2">
+
+        <div class="p-2 w-100 mx-auto">
+            <label for="userName" class="px-2 h5"> full name :</label>
+            <input formControlName="phone" type="tel" id="userName" class="form-control"
+                placeholder="enter your name ...">
+        </div>
+
+
+
+        <div class="p-2 w-100 mx-auto">
+            <label for="userPhone" class="px-2 h5"> phone :</label>
+            <input formControlName="phone" type="tel" id="userPhone" class="form-control"
+                placeholder="enter your phone number ...">
+        </div>
+
+        <div class="p-2 w-100 mx-auto">
+            <label for="userCity" class="px-2 h5"> City :</label>
+            <input formControlName="city" type="text" id="userCity" class="form-control"
+                placeholder="enter your City name ...">
+        </div>
+
+
+
+        <div class="p-2 w-100 mx-auto">
+            <label for="textarea" class="px-2 h5"> Adress :</label>
+            <textarea formControlName="details" name="textarea" id="textarea" class="w-100 form-control" rows="3"
+                placeholder="enter your adress details ..."></textarea>
+        </div>
+
+        <input type="checkbox" name="saveData" id="saveData" class="ms-3">
+        <label for="saveData" class="p-2 px-2"> save Adress details for next time </label>
+
+
+
+        <button [disabled]="checkOutForm.invalid" class="btn-main mx-auto d-block px-4 py-3 mt-5">
+            online payment
+            <img src="./assets/images/visa-1.svg" alt="">
+        </button>
+
+    </form>
+</section>

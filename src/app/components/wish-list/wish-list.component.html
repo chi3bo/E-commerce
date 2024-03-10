@@ -1,0 +1,51 @@
+<section class="bg-light overflow-hidden">
+
+    <h1 class="fw-bolder text-center mt-5 py-0">my Wish List
+        <span *ngIf="loadingFlag == false"> <i class="fa-solid fa-heart" style="color: #fe3939;"></i> </span>
+        <span *ngIf="loadingFlag == true"> <i class="fa-solid fa-heart fa-flip" style="color: #fe3939;"></i> </span>
+    </h1>
+
+    <div *ngFor="let item of whishItems" class="row wish-item  px-5  ">
+        <div class=" row p-5  border-bottom d-flex justify-content-between align-items-center">
+
+            <div class="col-md-4 col-lg-3 ">
+                <div class="rounded">
+                    <img class="w-100" [src]="item.imageCover" [alt]="item.title">
+                </div>
+            </div>
+
+
+            <div class="col-md-8 col-lg-9 ">
+                <div class="h-100 d-flex justify-content-between align-items-center">
+                    <div class="left col-md-8">
+                        <p class="h3">{{item.title}}</p>
+                        <p>{{item.category.name}}</p>
+                        <p>price : {{item.price | currency : ' EGP ' }} </p>
+                        <div>
+                            <p class="m-0 p-0"> <i class="fa-solid fa-star rating-color"></i> {{item.ratingsAverage}}
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="right col-md-4 d-flex flex-column ">
+                        <button (click)="addItemToCart(item._id)"
+                            class="btn btn-outline-success w-75 mx-auto py-2 my-1">
+                            <i class="fa-solid fa-cart-shopping"></i> add to cart
+                        </button>
+                        <button (click)="removeItem(item._id)" class="btn btn-outline-danger py-2 w-75 mx-auto my-1"> <i
+                                class="fa-solid fa-trash-can"></i> remove
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</section>

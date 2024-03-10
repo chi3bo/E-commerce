@@ -1,0 +1,22 @@
+.successModal {
+    /* successModal bg-info w-50 h-100 d-flex justify-content-center align-items-center  mx-auto position-absolute top-0 start-0 end-0 bottom-0 rounded */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80vh;
+    background: #0000006e;
+}
+
+
+.xc{
+    color: #4fff4f;
+    font-size: 50px;
+    position: absolute;
+    top: 20%;
+}

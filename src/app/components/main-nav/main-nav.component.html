@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <img src="./assets/images/freshcart-logo.svg" routerLink="home" alt="" class="me-3 cursor-pointer">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink='home'>home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink='cart'>cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink='products'>products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink='categories'>categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink='brands'>brands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink='wish-list'>wish-List</a>
+                </li>
+
+            </ul>
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                <li class="nav-item ">
+
+                    <p class="cursor-pointer bg-success border rounded px-2 py-0 my-0"> <i class=" fa-solid fa-cart-shopping"></i> {{cartNumber}}
+                    </p>
+
+                </li>
+
+                <li class="nav-item">
+                    <i class="cursor-pointer px-2 fa-brands fa-facebook"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="cursor-pointer px-2 fa-brands fa-twitter"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="cursor-pointer px-2 fa-brands fa-linkedin"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="cursor-pointer px-2 fa-brands fa-youtube"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="cursor-pointer px-2 fa-brands fa-instagram"></i>
+                </li>
+
+
+
+                <li class="nav-item px-3">
+                    <span class=" nav-link p-0 cursor-pointer " (click)="setLogout()">logout</span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

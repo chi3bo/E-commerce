@@ -1,0 +1,16 @@
+
+<div class="py-5 border rounded bg-light">
+    <h3 class=" text-center pb-2">Shop Papular Categories</h3>
+    <owl-carousel-o [options]="midSliderOptions">
+        <ng-container *ngFor="let slide of categList">
+            <ng-template carouselSlide [id]="slide._id">
+                <div >
+    
+    
+                    <img class="w-100 rounded-top " height="250" [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+                    <h3 class="py-1 h5 text-center border-bottom border-start border-end rounded bg-light">{{ slide.name }}</h3>
+                </div>
+                </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>

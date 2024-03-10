@@ -1,0 +1,88 @@
+<section class="w-75 bg-light p-4 mx-auto my-5 rounded position-relative">
+
+
+    <h2>register now :</h2>
+    <form [formGroup]="regForm" (submit)="submitReg()">
+
+        <div class="py-2">
+            <label for="userName"> userName </label>
+            <input #nameId type="text" class="form-control " formControlName="name" id="userName">
+            <div *ngIf="regForm.get('name')?.errors && ( regForm.get('name')?.touched || nameId.value.length > 0 ) "
+                class="alert-danger alert pb-0 ">
+                <p *ngIf="regForm.get('name')?.getError('required')">name is reqiured</p>
+                <p *ngIf="regForm.get('name')?.getError('minlength')">name min lenth 3</p>
+                <p *ngIf="regForm.get('name')?.getError('maxlength')">name max lenth 20</p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label for="userEmail"> userEmail </label>
+            <input #emailId type="text" class="form-control " formControlName="email" id="userEmail">
+            <div *ngIf="regForm.get('email')?.errors && (regForm.get('email')?.touched || emailId.value.length > 0) "
+                class="alert-danger alert pb-0 ">
+                <p *ngIf="regForm.get('email')?.getError('required')">Email is reqiured</p>
+                <p *ngIf="regForm.get('email')?.getError('email')">Email must be valid</p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label for="userName"> Password </label>
+            <input #passId type="text" class="form-control " formControlName="password" id="userPass">
+            <div *ngIf="regForm.get('password')?.errors && (regForm.get('password')?.touched || passId.value.length > 0) "
+                class="alert-danger alert pb-0 ">
+                <p *ngIf="regForm.get('password')?.getError('required')">Password is reqiured</p>
+                <p *ngIf="regForm.get('password')?.getError('pattern')">Password must be at least 6 chars</p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label for="userName"> RePassword </label>
+            <input #rePassId type="text" class="form-control " formControlName="rePassword" id="userRePass">
+            <div *ngIf="regForm.get('rePassword')?.errors && (regForm.get('rePassword')?.touched || rePassId.value.length > 0) "
+                class="alert-danger alert pb-0 ">
+                <p *ngIf="regForm.get('rePassword')?.getError('required')">RePassword is reqiured</p>
+                <p *ngIf="regForm.get('rePassword')?.getError('pattern')">RePassword must be same password</p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label for="userName"> userPhone </label>
+            <input #phoneId type="text" class="form-control " formControlName="phone" id="userPhone">
+            <div *ngIf="regForm.get('phone')?.errors && (regForm.get('phone')?.touched || phoneId.value.length > 0) "
+                class="alert-danger alert pb-0">
+                <p *ngIf="regForm.get('phone')?.getError('required')">Phone is reqiured</p>
+                <p *ngIf="regForm.get('phone')?.getError('pattern')">accept only egypt phone numbers</p>
+            </div>
+        </div>
+
+        <div *ngIf="accountExist" class="alert alert-danger pb-0 text-center m-3">
+            <p> Account Already Exists or invalid ! ... Use a new email</p>
+        </div>
+
+        <button [disabled]="regForm.invalid" class="btn-main py-2  d-block ms-auto">
+
+            <span *ngIf="spinner">
+                <i class="fa-solid fa-spinner fa-spin fa-xl"></i>
+            </span>
+            register now
+
+        </button>
+
+    </form>
+
+
+    <div *ngIf="doneRegister" class="successModal w-100  rounded-3 ">
+
+        <div
+            class="bg-white rounded-5 w-50 text-center h-50 d-flex justify-content-center align-items-center flex-column position-relative">
+            <span class="xc"> <i class="fa-regular fa-circle-check fa-bounce"></i> </span>
+            <p class="h1">success</p>
+            <p>Login page loading <i class="fa-solid fa-spinner fa-spin-pulse"></i></p>
+
+
+        </div>
+
+
+    </div>
+
+</section>

@@ -1,0 +1,57 @@
+<section>
+
+    <div class=" content bg-light my-4 p-3 rounded-3">
+        <h1>Shop Cart
+            <span *ngIf="countFlag"><i class="fa-solid fa-spinner fa-spin"></i></span>
+        </h1>
+
+        <h3>total price : {{ theCart.data.totalCartPrice }}</h3>
+
+        <div class="border rounded overflow-hidden px-3">
+            <div class="row my-3 border-bottom pb-2" *ngFor="let item of cartItems">
+
+                <div class="col-1">
+                    <div>
+                        <img class="w-100" [src]="item.product.imageCover" [alt]="item.product.title">
+                    </div>
+                </div>
+
+                <div class="col-11">
+
+                    <div class="details d-flex justify-content-between">
+
+                        <div class="left">
+                            <p class="h5">{{item.product.title}}</p>
+                            <p>price : {{item.price | currency : ' EGP ' }} </p>
+                            <button (click)="removeItem(item.product._id)" class="btn border text-danger"> <i
+                                    class="fa-solid fa-trash-can"></i> remove </button>
+                        </div>
+
+                        <div class="right d-flex justify-content-center align-items-center">
+                            <button (click)="editCount(item.product.id , item.count + 1)" class="btn btn-success"> +
+                            </button>
+                            <p class="px-2 my-0"> {{item.count}} </p>
+                            <button [disabled]="item.count<=1" (click)="editCount(item.product.id , item.count - 1)"
+                                class="btn btn-success"> - </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button *ngIf="cartItems.length > 0" class="btn-main py-3 my-3" [routerLink]="['/check-out' , theCart.data._id]">
+                Check out
+                <span> <i  class="fa-regular fa-square-check fs-5 px-2"></i></span>
+            </button>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+</section>
