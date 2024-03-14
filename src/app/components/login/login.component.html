@@ -8,7 +8,7 @@
 
 
         <div class="py-2">
-            <label for="userEmail"> userEmail </label>
+            <label for="userEmail"> userEmail :</label>
             <input (click)="hideErrMsg()" #emailId type="text" class="form-control " formControlName="email" id="userEmail">
             <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || emailId.value.length > 0) "
                 class="alert-danger alert pb-0 ">
