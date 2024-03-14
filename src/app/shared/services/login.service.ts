@@ -18,4 +18,15 @@ export class LoginService {
   }
 
 
+  verifycode(body: any): Observable<any>{
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`, body)
+  }
+
+
+  
+  resetPass(body: any): Observable<any>{
+    return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`, body)
+  }
+
+
 }

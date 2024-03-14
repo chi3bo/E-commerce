@@ -1,7 +1,67 @@
-<section>
+<section class="w-75 bg-light p-4 mx-auto my-5 rounded">
 
-    <div>
-        <h3>please enter your Email</h3>
-    </div>
-    <input type="email" formControlName=""> 
+    <!--  ---------------- mail form ----------------  -->
+    <form *ngIf="sentDone==null" [formGroup]="forgetForm" (submit)="sendEmail()">
+        <div class="py-4">
+            <h3>please enter your Email</h3>
+        </div>
+        <input #emailId (click)="hideErrMsg()" type="email" formControlName="email" class="form-control p-3">
+
+        <div *ngIf="forgetForm.get('email')?.errors && (forgetForm.get('email')?.touched || emailId.value.length > 0)"
+            class=" my-1 alert alert-danger">
+            <p *ngIf="forgetForm.get('email')?.getError('required')" class="py-0 my-0">email is reqiured</p>
+            <p *ngIf="forgetForm.get('email')?.getError('email')" class="py-0 my-0"> please enter a valid email !</p>
+        </div>
+
+
+        <div *ngIf="errmail" class=" my-1 alert alert-danger">
+            <p class="py-0 my-0">{{errmail}}</p>
+        </div>
+
+
+
+        <button [disabled]="forgetForm.invalid" class="btn-main py-3 my-3 d-block mx-auto">
+            send verification code
+            <span *ngIf="loading">
+                <i class="fa-solid fa-spinner fa-spin fa-xl"></i>
+            </span>
+        </button>
+
+
+    </form>
+    <p *ngIf="sentDone" class="text-success lead">Reset code sent to your email <i class="fa-solid fa-check"></i></p>
+
+
+
+    <!--  ---------------- code form ----------------  -->
+    <form *ngIf="sentDone" [formGroup]="verifyForm" (submit)="verifyCode()">
+
+        <h3 class="py-4">Enter the reset code :</h3>
+
+        <input #theCode (click)="hideErrMsg()" type="text" formControlName="resetCode" class="form-control p-3">
+
+        <div *ngIf="verifyForm.get('resetCode')?.errors && (verifyForm.get('resetCode')?.touched || theCode.value.length > 0)"
+            class=" my-1 alert alert-danger">
+            <p *ngIf="verifyForm.get('resetCode')?.getError('required')" class="py-0 my-0">reset code is reqiured</p>
+        </div>
+
+
+        <div *ngIf="errcode" class=" my-1 alert alert-danger">
+            <p class="py-0 my-0">{{errcode}}</p>
+        </div>
+
+        <button [disabled]="verifyForm.invalid" class="btn-main py-3 my-3 d-block mx-auto">
+            submit code
+            <span *ngIf="loading">
+                <i class="fa-solid fa-spinner fa-spin fa-xl"></i>
+            </span>
+        </button>
+
+
+    </form>
+    <p *ngIf="codeDone" class="text-success lead"> Reset code submited Successfully <i class="fa-solid fa-check"></i>
+    </p>
+
+
 </section>
+

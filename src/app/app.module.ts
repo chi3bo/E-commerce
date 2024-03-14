@@ -31,6 +31,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllOrdersComponent } from './components/all-orders/all-orders.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ForgetPassComponent } from './components/forget-pass/forget-pass.compon
     AllOrdersComponent,
     WishListComponent,
     ForgetPassComponent,
+    ResetPassComponent,
   ],
 
   imports: [

@@ -1,3 +1,7 @@
-.forgot:hover{
-color: rgb(120, 200, 0);
+.forgot:hover {
+    color: rgb(120, 200, 0);
+}
+
+.forgot{
+    transition: color .3s;
 }

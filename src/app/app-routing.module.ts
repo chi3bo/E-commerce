@@ -15,6 +15,8 @@ import { CheckOutComponent } from './components/check-out/check-out.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllOrdersComponent } from './components/all-orders/all-orders.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
+import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 const routes: Routes = [
 
@@ -37,7 +39,10 @@ const routes: Routes = [
     path: '', component: AuthComponent, children: [
       { path: 'login', component: LoginComponent, title: 'login' },
       { path: 'register', component: RegisterComponent, title: 'register' },
+      { path: 'Forget-Pass', component: ForgetPassComponent, title: 'Forget Password' },
+      { path:'reset-pass' , component:ResetPassComponent , title : 'reset password'},
       { path: '**', component: NotFoundComponent ,title:'Not found !' },
+
     ]
   },
 

@@ -21,7 +21,6 @@ export class ProductsComponent implements OnInit {
     this._CartService.addToCart(id).subscribe({
       next: (response) => {
         this._ToastrService.success(response.message)
-        console.log(response);
       },
 
       error: (err) => {

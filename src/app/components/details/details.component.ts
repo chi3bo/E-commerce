@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { oneProduct } from 'src/app/shared/interfaces/one-product';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -10,7 +11,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  constructor(private _CartService: CartService, private _ProductsService: ProductsService, private _ActivatedRoute: ActivatedRoute) { }
+  constructor(private _CartService: CartService, private _ProductsService: ProductsService, private _ActivatedRoute: ActivatedRoute ,private _ToastrService:ToastrService) { }
 
   itemId: any = ''
   theProduct:oneProduct = {} as oneProduct
@@ -47,7 +48,11 @@ export class DetailsComponent implements OnInit {
 
   addItemToCart(id:string){
     this._CartService.addToCart(id).subscribe({
-      next:(response)=>{console.log(response);} , 
+      next:(response)=>{
+        console.log(response);
+        this._ToastrService.success(response.message)
+
+      } , 
     
       error:(err)=>{console.log(err);
       }

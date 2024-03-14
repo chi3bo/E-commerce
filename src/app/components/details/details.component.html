@@ -1,5 +1,5 @@
 <section class="  mx-auto mt-5">
-    <div class="row align-items-center">
+    <div class="row align-items-center my-5">
         <div class="col-md-3">
             <div>
                 <img [src]="theProduct.imageCover" [alt]="theProduct.title" class="w-100">
@@ -12,7 +12,7 @@
             <p class=" text-muted">{{theProduct.description}}</p>
             <h4 class="h6">{{theProduct.category.name}}</h4>
             <div class="d-flex justify-content-between pt-2 ">
-                <p>{{theProduct.price}}</p>
+                <p>{{theProduct.price | currency:' EGP '}}</p>
                 <div class="d-flex ">
                     <i class="fa-solid fa-star rating-color"></i>
                     <p>{{theProduct.ratingsAverage}}</p>
