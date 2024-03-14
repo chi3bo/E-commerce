@@ -9,7 +9,7 @@
 
         <div class="py-2">
             <label for="userEmail"> userEmail </label>
-            <input #emailId type="text" class="form-control " formControlName="email" id="userEmail">
+            <input (click)="hideErrMsg()" #emailId type="text" class="form-control " formControlName="email" id="userEmail">
             <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || emailId.value.length > 0) "
                 class="alert-danger alert pb-0 ">
                 <p *ngIf="loginForm.get('email')?.getError('required')">Email is reqiured</p>
@@ -19,11 +19,10 @@
 
         <div class="py-2">
             <label for="userName"> Password </label>
-            <input #passId type="text" class="form-control " formControlName="password" id="userPass">
+            <input (click)="hideErrMsg()" #passId type="text" class="form-control " formControlName="password" id="userPass">
             <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || passId.value.length > 0) "
                 class="alert-danger alert pb-0 ">
                 <p *ngIf="loginForm.get('password')?.getError('required')">Password is reqiured</p>
-                <p *ngIf="loginForm.get('password')?.getError('pattern')">Password must be at least 6 chars</p>
             </div>
         </div>
 

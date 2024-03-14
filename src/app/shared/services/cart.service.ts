@@ -44,7 +44,7 @@ export class CartService {
 
   checkOut(cartId: string, myBody: any): Observable<any> {
 
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://chi3bo.github.io/`, // base URL
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://chi3bo.github.io/E-commerce`, // base URL
       myBody,                                                                                                                         // body => DATA
       { headers: this.getToken() }                                                                                                      // headers => token
     )
