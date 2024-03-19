@@ -26,7 +26,7 @@
         </div>
 
         <div class="py-2">
-            <label for="userName"> Password </label>
+            <label for="userPass"> Password </label>
             <input #passId type="text" class="form-control " formControlName="password" id="userPass">
             <div *ngIf="regForm.get('password')?.errors && (regForm.get('password')?.touched || passId.value.length > 0) "
                 class="alert-danger alert pb-0 ">
@@ -36,17 +36,17 @@
         </div>
 
         <div class="py-2">
-            <label for="userName"> RePassword </label>
+            <label for="userRePass"> RePassword </label>
             <input #rePassId type="text" class="form-control " formControlName="rePassword" id="userRePass">
             <div *ngIf="regForm.get('rePassword')?.errors && (regForm.get('rePassword')?.touched || rePassId.value.length > 0) "
                 class="alert-danger alert pb-0 ">
                 <p *ngIf="regForm.get('rePassword')?.getError('required')">RePassword is reqiured</p>
-                <p *ngIf="regForm.get('rePassword')?.getError('pattern')">RePassword must be same password</p>
+                <p *ngIf="regForm.get('rePassword')?.getError('mismatch')">RePassword must be same password</p>
             </div>
         </div>
 
         <div class="py-2">
-            <label for="userName"> userPhone </label>
+            <label for="userPhone"> userPhone </label>
             <input #phoneId type="text" class="form-control " formControlName="phone" id="userPhone">
             <div *ngIf="regForm.get('phone')?.errors && (regForm.get('phone')?.touched || phoneId.value.length > 0) "
                 class="alert-danger alert pb-0">

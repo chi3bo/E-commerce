@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormControlOptions } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/shared/services/register.service';
 
@@ -21,14 +21,26 @@ export class RegisterComponent {
     name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     email: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{6,10}$/),]],
-    rePassword: [null, [Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{6,10}$/),]],
+    rePassword: [null] ,
     phone: [null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/),]],
-  })
+  } ,   {validators : [this.checkRePassword]} as FormControlOptions )// HERE !!!!
 
+
+  // custom validatior : rePass = pass 
+  checkRePassword(myForm:FormGroup){
+    let pass = myForm.get('password')
+    let rePass = myForm.get('rePassword')
+
+    if (rePass?.value == '') {
+      rePass.setErrors({required:true})
+    }
+    else if (pass?.value != rePass?.value) {
+      rePass?.setErrors({mismatch : true})
+    }
+
+  }
 
   submitReg() {
-
-
     if (this.regForm.valid) {
       this.spinner = true
       this._RegisterService.setRegister(this.regForm.value).subscribe({
