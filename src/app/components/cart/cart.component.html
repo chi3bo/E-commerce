@@ -1,9 +1,7 @@
 <section>
 
     <div class=" content bg-light my-4 p-3 rounded-3">
-        <h1>Shop Cart
-            <span *ngIf="countFlag"><i class="fa-solid fa-spinner fa-spin"></i></span>
-        </h1>
+        <h1>Shop Cart</h1>
 
         <h3>total price : {{ theCart.data.totalCartPrice }}</h3>
 
@@ -39,9 +37,10 @@
                 </div>
             </div>
 
-            <button *ngIf="cartItems.length > 0" class="btn-main py-3 my-3" [routerLink]="['/check-out' , theCart.data._id]">
+            <button *ngIf="cartItems.length > 0" class="btn-main py-3 my-3"
+                [routerLink]="['/check-out' , theCart.data._id]">
                 Check out
-                <span> <i  class="fa-regular fa-square-check fs-5 px-2"></i></span>
+                <span> <i class="fa-regular fa-square-check fs-5 px-2"></i></span>
             </button>
         </div>
 

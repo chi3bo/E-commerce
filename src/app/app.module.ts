@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,8 +17,8 @@ import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
-import {  RouterModule} from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { RouterModule } from '@angular/router';
 import { TopSliderComponent } from './components/top-slider/top-slider.component';
 import { MiddleSliderComponent } from './components/middle-slider/middle-slider.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -32,6 +32,8 @@ import { AllOrdersComponent } from './components/all-orders/all-orders.component
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingscreenInterceptor } from './loadingscreen.interceptor';
 
 @NgModule({
   declarations: [
@@ -71,10 +73,14 @@ import { ResetPassComponent } from './components/reset-pass/reset-pass.component
     FormsModule,
     CommonModule,
     ToastrModule.forRoot(),
-    
-    
+    NgxSpinnerModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  
+  providers: [
+    {provide: HTTP_INTERCEPTORS , useClass:LoadingscreenInterceptor , multi:true}
+  ],
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }
