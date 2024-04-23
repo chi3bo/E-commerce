@@ -10,8 +10,7 @@ import { LogOutService } from 'src/app/shared/services/log-out.service';
 })
 export class MainNavComponent implements OnInit {
   constructor(private _Router: Router, private _LogOutService: LogOutService, private _CartService: CartService) { }
-
-  cartNumber:any = '0'
+  cartNumber: any = 0
 
   setLogout(): void {
     this._LogOutService.Logout()
@@ -21,18 +20,22 @@ export class MainNavComponent implements OnInit {
   ngOnInit(): void {
     this._CartService.getUserCart().subscribe({
       next: (response) => {
-        this.cartNumber = response.data.products.length
-      },
-
-
-      error: (err) => {
-        console.log(err);
+        this._CartService.cartCount.next(response.numOfCartItems)
       }
+      ,
+      error: (err) => { console.log(err); }
     })
+
+
+    this._CartService.cartCount.subscribe({
+      next: (response) => {
+        this.cartNumber = response
+      }
+      ,
+      error: (err) => { console.log(err); }
+    })
+
+
   }
-
-
-
-
 
 }

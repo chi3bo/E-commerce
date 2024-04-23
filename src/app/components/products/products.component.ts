@@ -16,10 +16,12 @@ export class ProductsComponent implements OnInit {
   whishList: oneProduct[] = []
   wishIdes: string[] = []
   searchValue: string = ''
+  removeMsg: string = 'Product removed from your wishlist'
 
   addItemToCart(id: string) {
     this._CartService.addToCart(id).subscribe({
       next: (response) => {
+        this._CartService.cartCount.next(response.numOfCartItems)
         this._ToastrService.success(response.message)
       },
 
@@ -58,24 +60,40 @@ export class ProductsComponent implements OnInit {
       }
     })
 
-
-
-
-
   }
 
-  addToWishlist(productId: any , heart:HTMLElement) {
+  addToWishlist(productId: any, heart: HTMLElement, myIcon: HTMLElement) {
+    // make sure that wishList inclued this item or not..
 
-    this._ProductsService.addToWish(productId).subscribe({
-      next: (response) => {
-        console.log(response);
-        heart.classList.add('icon-active')
-        this._ToastrService.success( response.message )
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+    if (this.wishIdes.includes(productId)) {
+      this._ProductsService.removeFromWish(productId).subscribe({
+        next: (response) => {
+          this.wishIdes = response.data
+          heart.classList.remove('icon-active')
+          heart.classList.add('icon-muted')
+          this._ToastrService.info(this.removeMsg, '', { progressBar: true })
+
+        },
+        error: (response) => {
+          console.log(response);
+
+        }
+      })
+    }
+    else {
+      this._ProductsService.addToWish(productId).subscribe({
+        next: (response) => {
+          this.wishIdes = response.data
+          heart.classList.add('icon-active')
+          heart.classList.remove('icon-muted')
+          this._ToastrService.success(response.message, '', { progressBar: true })
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    }
+
   }
 
 }

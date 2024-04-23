@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 import { cartItem } from 'src/app/shared/interfaces/cart-data';
 import { cartData } from 'src/app/shared/interfaces/cart-data';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -24,7 +25,7 @@ export class CartComponent implements OnInit {
       next: (response) => {
         this.theCart = response
         this.cartItems = response.data.products
-        console.log(response);
+        this._CartService.cartCount.next(response.numOfCartItems)
         this._ToastrService.info('item removed !')
 
       },
@@ -52,16 +53,11 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this._CartService.getUserCart().subscribe({
       next: (response) => {
         this.theCart = response
         this.cartItems = response.data.products
-        console.log(this.cartItems.length);
-
-
       },
-
 
       error: (err) => {
         console.log(err);

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar shadow-sm navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <img src="./assets/images/freshcart-logo.svg" routerLink="home" alt="" class="me-3 cursor-pointer">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,13 +29,15 @@
 
             </ul>
 
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 
                 <li class="nav-item ">
-
-                    <p routerLink="cart" class="cursor-pointer bg-success border rounded px-2 py-0 my-0"> <i class=" fa-solid fa-cart-shopping"></i> {{cartNumber}}
+                    <p routerLink="cart" class="cursor-pointer border rounded px-2 py-1 my-0 position-relative">
+                        <img src="./assets/images/cart-shopping-solid.svg" width="36px" alt="">
+                        <span class="iconNumber bg-danger px-1 ">
+                            {{cartNumber}}
+                        </span>
                     </p>
-
                 </li>
 
                 <li class="nav-item">

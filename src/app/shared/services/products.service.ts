@@ -22,10 +22,16 @@ export class ProductsService {
   }
 
 
-  addToWish(id: string ): Observable<any> {
+  addToWish(productId: string): Observable<any> {
     return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/wishlist`,
-      { productId: id },
+      { productId: productId },
       { headers: this.getToken() },
+    )
+  }
+
+  removeFromWish(productId: string): Observable<any> {
+    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`,
+      { headers: this.getToken() }
     )
   }
 

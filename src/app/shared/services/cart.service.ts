@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class CartService {
 
   constructor(private _HttpClient: HttpClient) { }
+  cartCount: BehaviorSubject<any> = new BehaviorSubject(0)
+
 
 
   getToken(): any {

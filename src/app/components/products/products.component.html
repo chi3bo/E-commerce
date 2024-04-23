@@ -35,11 +35,12 @@
                     <button (click)="addItemToCart(item._id)" class="btn-main addBtn itmeBtn mx-auto ">
                         <i class="fa-solid fa-cart-shopping"></i> add to cart
                     </button>
+                    
                     <div class="whishList mx-auto ">
                         <span #heart [ngClass]="{ 'icon-active' : wishIdes.includes(item._id) ,
                                     'icon-muted' : wishIdes.includes(item._id)==false }"
-                            (click)="addToWishlist(item.id , heart   )">
-                            <i class="fa-solid fa-heart fa-xl "></i>
+                            (click)="addToWishlist(item.id , heart , MyIcon )">
+                            <i #MyIcon class="fa-solid fa-heart fa-xl"></i>
                         </span>
 
 

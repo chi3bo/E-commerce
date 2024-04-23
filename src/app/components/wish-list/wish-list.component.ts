@@ -19,6 +19,7 @@ export class WishListComponent implements OnInit {
   addItemToCart(id: string) {
     this._CartService.addToCart(id).subscribe({
       next: (response) => {
+        this._CartService.cartCount.next(response.numOfCartItems)
         this._ToastrService.success(response.message)
         this.removeItem(id)
       },
