@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { oneProduct } from 'src/app/shared/interfaces/one-product';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -17,6 +17,9 @@ export class ProductsComponent implements OnInit {
   wishIdes: string[] = []
   searchValue: string = ''
   removeMsg: string = 'Product removed from your wishlist'
+
+
+
 
   addItemToCart(id: string) {
     this._CartService.addToCart(id).subscribe({
@@ -37,6 +40,10 @@ export class ProductsComponent implements OnInit {
     this._ProductsService.getAllProducts().subscribe({
       next: (response) => {
         this.productsList = response.data
+        this.pageMax = response.metadata.limit
+        this.theCurrentPage = response.metadata.currentPage
+        this.nextP = response.metadata.nextPage
+        this.total = response.results
         console.log(response);
       },
       error: (response) => {
@@ -95,5 +102,34 @@ export class ProductsComponent implements OnInit {
     }
 
   }
+
+  // ===== start pagination ====
+  pageMax: number = 0
+  theCurrentPage: number = 0
+  nextP: number = 0
+  total: number = 0
+  pageChanged(event: any): void {
+    this._ProductsService.getAllProducts(16, event).subscribe({
+      next: (response) => {
+        this.productsList = response.data
+        this.pageMax = response.metadata.limit
+        this.theCurrentPage = response.metadata.currentPage
+        this.nextP = response.metadata.nextPage
+        this.total = response.results
+        console.log(response);
+      },
+      error: (response) => {
+        console.log(response.data);
+      }
+    })
+  }
+  goUp(section: HTMLElement): void {
+    scrollTo(0, section.offsetTop - 100)
+  }
+  // ===== pagination ====
+
+
+
+
 
 }

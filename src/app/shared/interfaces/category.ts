@@ -1,6 +1,6 @@
-export type Root = categpry[]
+export type Root = category[]
 
-export interface categpry {
+export interface category {
     _id: string
     name: string
     slug: string

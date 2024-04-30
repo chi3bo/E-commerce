@@ -13,8 +13,9 @@ export class ProductsService {
     return { token: localStorage.getItem('userToken') }
   }
 
-  getAllProducts(): Observable<any> {
-    return this._HttpClient.get('https://ecommerce.routemisr.com/api/v1/products')
+  getAllProducts( itemsPerPage:number = 16 , pageNum:number = 1 , categoryOrBrand:string = ''): Observable<any> {
+    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/products?limit=${itemsPerPage}&page=${pageNum}&${categoryOrBrand}`)
+    // return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/products?category[in]=6439d58a0049ad0b52b9003f`)
   }
 
   getOneProduct(itemId: string): Observable<any> {

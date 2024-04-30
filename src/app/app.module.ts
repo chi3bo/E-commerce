@@ -34,6 +34,7 @@ import { ForgetPassComponent } from './components/forget-pass/forget-pass.compon
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingscreenInterceptor } from './loadingscreen.interceptor';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { LoadingscreenInterceptor } from './loadingscreen.interceptor';
     CommonModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
+    NgxPaginationModule
   ],
   
   providers: [

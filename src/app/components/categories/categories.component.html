@@ -1,46 +1,79 @@
+<!--  the categories   -->
 <section class="my-5">
-
     <h1 class="text-center pb-3">categories</h1>
-
     <div class="row g-4  ">
-
-        <div *ngFor="let item of categList" class="col-md-4 col-sm-6 ">
-            <div (click)="displaySub(item._id)" class=" card rounded overflow-hidden">
+        <div *ngFor="let item of categList" class="col-lg-3 col-md-4 col-sm-6 ">
+            <div (click)="displayitems(item._id , item.name , productsSection)" class=" card rounded overflow-hidden">
 
                 <div class="myCard overflow-hidden d-flex justify-content-center align-items-center">
-                    <img class="w-100" [src]="item.image" [alt]="item.name">
+                    <img class="w-100 h-100" [src]="item.image" [alt]="item.name">
                 </div>
 
-                <div class="p-3 text-center bg-white">
+                <div class="p-3 text-center bg-white border-top">
                     <h3 class="fw-bolder text-main">{{item.name}}</h3>
                 </div>
 
             </div>
         </div>
-
-
     </div>
-
-
-
-
 </section>
 
-<section *ngIf="supList[0] " class="sup my-5 ">
-    <h1 class="text-center pb-3"> subcategories </h1>
+<!--  the products   -->
+<section #productsSection  class="py-5" >
+    <h2 *ngIf="categoryName != '' "  class="bg-body-tertiary text-center py-2 rounded"> {{categoryName}} </h2>
+    <div *ngIf="categoryName != '' "  class="row g-3 my-5 ">
 
-    <div class="row g-4">
-        <div *ngFor="let item of supList" class="col-md-4 col-sm-6 ">
+        <div *ngFor=" let item of productsList" class="productCard col-lg-3 col-md-4 col-sm-6 overflow-hidden">
 
-            <div class="supCard card w-100 p-3 ">
-                <h5>{{item.name}}</h5>
+            <div class="item border border-success-subtle rounded-2 p-2 ">
+
+                <div [routerLink]="['/details' , item._id]">
+                    <img [src]="item.imageCover" width="100%" [alt]="item.title">
+                    <div class="upTitle d-flex justify-content-between">
+                        <p class="h5 pt-1  m-0">{{item.title.split(' ' , 2).join(' ')}} </p>
+
+
+                    </div>
+                    <p class="small p-0 m-0 smallName">{{item.category.name}}</p>
+                    <div class="d-flex justify-content-between pt-2 pb-1">
+                        <p class="m-0">{{item.price | currency }}</p>
+                        <div>
+                            <p class="m-0"> <i class="fa-solid fa-star rating-color"></i> {{item.ratingsAverage}} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="itemFooter d-flex align-items-center">
+                    <button (click)="addItemToCart(item._id)" class="btn-main addBtn itmeBtn mx-auto ">
+                        <i class="fa-solid fa-cart-shopping"></i> add to cart
+                    </button>
+
+                    <div class="whishList mx-auto ">
+                        <span #heart [ngClass]="{ 'icon-active' : wishIdes.includes(item._id) ,
+                                'icon-muted' : wishIdes.includes(item._id)==false }"
+                            (click)="addToWishlist(item.id , heart , MyIcon )">
+                            <i #MyIcon class="fa-solid fa-heart fa-xl"></i>
+                        </span>
+
+
+                    </div>
+                </div>
+
+
             </div>
 
+        </div>
 
+        <div  *ngIf="noItems" class="noItems min-70">
+            <div class="w-25">
+                <img src="./assets/images/emptyCartEdited.png" class="w-100">
+            </div>
+
+            <p class=" sorryMsg w-50 text-center"> Sorry, no products available here right now. Discover more in
+                <span (click)="scrollTop()" class=" text-main cursor-pointer text-decoration-underline"> other categories </span>
+            </p>
         </div>
 
 
     </div>
-
-
 </section>
