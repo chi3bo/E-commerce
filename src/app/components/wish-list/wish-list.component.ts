@@ -14,6 +14,8 @@ export class WishListComponent implements OnInit {
   whishItems: Product[] = []
   wishCount: number = 0
   loadingFlag: boolean = false
+  noItems:boolean = false
+
 
 
   addItemToCart(id: string) {
@@ -41,6 +43,8 @@ export class WishListComponent implements OnInit {
               this.wishCount = response.count
               this.whishItems = response.data
               this.loadingFlag = false
+              if(this.whishItems.length == 0){ this.noItems= true}
+              else { this.noItems= false } ;
             },
             error: (err) => {
               console.log(err);
@@ -61,8 +65,12 @@ export class WishListComponent implements OnInit {
     this._ProductsService.getAllWish().subscribe({
       next: (response) => {
         console.log(response);
-        this.wishCount = response.count
         this.whishItems = response.data
+        this.wishCount = response.count
+        if(this.whishItems.length == 0){ this.noItems= true}
+        else { this.noItems= false } ;
+
+
       },
       error: (err) => {
         console.log(err);

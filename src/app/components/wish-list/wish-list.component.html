@@ -1,6 +1,6 @@
 <section class="bg-light overflow-hidden">
 
-    <h1 class="fw-bolder text-center mt-5 py-0">my Wish List
+    <h1 class="fw-bolder text-center mt-5 py-4 border-bottom">my Wish List
         <span *ngIf="loadingFlag == false"> <i class="fa-solid fa-heart" style="color: #fe3939;"></i> </span>
         <span *ngIf="loadingFlag == true"> <i class="fa-solid fa-heart fa-flip" style="color: #fe3939;"></i> </span>
     </h1>
@@ -42,8 +42,20 @@
 
                 </div>
             </div>
+
+
         </div>
 
+    </div>
+
+    <div *ngIf="noItems" class="noItems min-70">
+        <div class="w-25">
+            <img src="./assets/images/emptyCartEdited.png" class="w-100">
+        </div>
+
+        <p class="sorryMsg fw-bolder w-50 text-center"> Your wishList is empty , add some
+            <span routerLink="/products" class=" text-main cursor-pointer text-decoration-underline"> products </span>
+        </p>
     </div>
 
 

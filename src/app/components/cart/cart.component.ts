@@ -17,7 +17,8 @@ export class CartComponent implements OnInit {
 
   theCart: cartData = {} as cartData
   cartItems: cartItem[] = []
-
+  TotalPrice:number = 0
+  noItems:boolean = false
 
 
   removeItem(itemId: string) {
@@ -25,6 +26,9 @@ export class CartComponent implements OnInit {
       next: (response) => {
         this.theCart = response
         this.cartItems = response.data.products
+        this.TotalPrice = response.data.totalCartPrice
+        if (this.cartItems.length == 0){ this.noItems= true }
+        else { this.noItems= false };
         this._CartService.cartCount.next(response.numOfCartItems)
         this._ToastrService.info('item removed !')
 
@@ -41,6 +45,7 @@ export class CartComponent implements OnInit {
         next: (response) => {
           this.theCart = response
           this.cartItems = response.data.products
+          this.TotalPrice = response.data.totalCartPrice
         },
   
         error: (err) => { console.log(err); 
@@ -57,6 +62,10 @@ export class CartComponent implements OnInit {
       next: (response) => {
         this.theCart = response
         this.cartItems = response.data.products
+        this.TotalPrice = response.data.totalCartPrice
+        console.log(this.cartItems.length);
+        if (this.cartItems.length == 0){ this.noItems= true }
+        else { this.noItems= false }
       },
 
       error: (err) => {
@@ -64,6 +73,7 @@ export class CartComponent implements OnInit {
       }
     })
   }
+
 
 
 }

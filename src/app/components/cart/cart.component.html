@@ -1,11 +1,25 @@
 <section>
 
     <div class=" content bg-light my-4 p-3 rounded-3">
-        <h1>Shop Cart</h1>
 
-        <h3>total price : {{ theCart.data.totalCartPrice }}</h3>
+        <div class=" rounded">
+            <h1 class="text-center py-1 fw-bolder ">My Cart </h1>
+            <h3 class="p-2">total price : {{ TotalPrice }} </h3>
+        </div>
 
         <div class="border rounded overflow-hidden px-3">
+
+            <div *ngIf="noItems" class="noItems min-70">
+                <div class="w-25">
+                    <img src="./assets/images/emptyCartEdited.png" class="w-100">
+                </div>
+
+                <p class="sorryMsg fw-bolder w-50 text-center"> Your Cart is empty , add some
+                    <span routerLink="/products" class=" text-main cursor-pointer text-decoration-underline"> products </span>
+                </p>
+            </div>
+
+
             <div class="row my-3 border-bottom pb-2" *ngFor="let item of cartItems">
 
                 <div class="col-md-2">

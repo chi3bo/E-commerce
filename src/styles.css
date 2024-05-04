@@ -15,8 +15,33 @@ body {
     font-family: var(--font-family) !important;
 }
 
-.nav-link {
-    transition: unset !important;
+
+::selection{
+    background-color: var(--main-color);
+    color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar{
+    width: 12px;
+background-color:rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+    border-radius: 10px;
+}
+
+
+
+.nav-link{
+    font-weight: bold;
+    border-top: transparent 3px solid;
+    border-bottom:transparent 3px solid;
+    transition:all .5s ;
+}
+
+.nav-link:hover {
+    border-bottom: #0aad0a 3px solid ;
 }
 
 .iconNumber {
@@ -42,7 +67,6 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
-
 
 .product {
     border-radius: 5px;
@@ -134,8 +158,6 @@ body {
     align-items: center;
 }
 
-
-
 .itmeBtn {
     position: relative;
     top: 80px;
@@ -153,7 +175,6 @@ body {
     height: 100%;
 }
 
-
 .productCard:hover .itmeBtn {
     top: 0;
 }
@@ -161,8 +182,6 @@ body {
 .paginationDiv {
     height: 150px;
 }
-
-
 
 .myPagination ::ng-deep .ngx-pagination .current {
     background: #0aad0a;

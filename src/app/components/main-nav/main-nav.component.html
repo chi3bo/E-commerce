@@ -31,7 +31,7 @@
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 
-                <li class="nav-item ">
+                <li class="nav-item py-2">
                     <p routerLink="cart" class="cursor-pointer border rounded px-2 py-1 my-0 position-relative">
                         <img src="./assets/images/cart-shopping-solid.svg" width="36px" alt="">
                         <span class="iconNumber bg-danger px-1 ">
@@ -40,6 +40,7 @@
                     </p>
                 </li>
 
+            <div class="icons py-2 d-flex justify-content-center align-items-center">
                 <li class="nav-item">
                     <i class="cursor-pointer px-2 fa-brands fa-facebook"></i>
                 </li>
@@ -55,11 +56,13 @@
                 <li class="nav-item">
                     <i class="cursor-pointer px-2 fa-brands fa-instagram"></i>
                 </li>
+            </div>
 
 
 
-                <li class="nav-item px-3">
-                    <span class=" nav-link p-0 cursor-pointer " (click)="setLogout()">logout</span>
+
+                <li class="nav-item py-1 px-3">
+                    <span class=" nav-link  cursor-pointer " (click)="setLogout()">logout <i class="fa-solid fa-right-from-bracket"></i> </span>
                 </li>
             </ul>
 
