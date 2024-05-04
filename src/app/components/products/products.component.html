@@ -53,12 +53,12 @@
         </div>
     </div>
 
-    <div (click)="goUp(productsSection)"
-        class="paginationDiv bg-body-tertiary w-100 border-3 d-flex justify-content-center align-items-center">
-        <pagination-controls class="myPagination" id="myPagination" (pageChange)="pageChanged($event)"
-            (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="true"
-            [responsive]="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
-            screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+    <div class="paginationDiv bg-body-tertiary w-100 border-3 d-flex justify-content-center align-items-center">
+        <pagination-controls class="myPagination" id="myPagination" (pageChange)="pageChanged($event , productsSection)"
+            (pageBoundsCorrection)="pageChanged($event , productsSection)" [maxSize]="9" [directionLinks]="true"
+            [autoHide]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next"
+            screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page">
         </pagination-controls>
     </div>
 

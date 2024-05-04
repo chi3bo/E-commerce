@@ -108,7 +108,7 @@ export class ProductsComponent implements OnInit {
   theCurrentPage: number = 0
   nextP: number = 0
   total: number = 0
-  pageChanged(event: any): void {
+  pageChanged(event: any, productsSection: HTMLElement): void {
     this._ProductsService.getAllProducts(16, event).subscribe({
       next: (response) => {
         this.productsList = response.data
@@ -116,6 +116,7 @@ export class ProductsComponent implements OnInit {
         this.theCurrentPage = response.metadata.currentPage
         this.nextP = response.metadata.nextPage
         this.total = response.results
+        setTimeout(() => { scrollTo(0, productsSection.offsetTop - 100) }, 400);
         console.log(response);
       },
       error: (response) => {
@@ -123,9 +124,7 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
-  goUp(section: HTMLElement): void {
-    scrollTo(0, section.offsetTop - 100)
-  }
+
   // ===== pagination ====
 
 
