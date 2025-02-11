@@ -202,7 +202,18 @@ background-color:rgba(0, 0, 0, 0.2);
 .sorryMsg {
     font-size: 26px;
 }
-
+.alert-danger{
+    padding-block: 8px;
+    background: transparent;
+    color: red;
+    border: none;
+    margin: 0;
+}
+.alert-danger p{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
 
 /* ============ start  loading screen  =============== */
 .loader-120 {

@@ -1,7 +1,7 @@
 <section class="w-75 bg-light p-4 mx-auto my-5 rounded">
 
 
-    <form *ngIf="resetDone" [formGroup]="resetForm" (submit)="resetpassWord()">
+    <form *ngIf="resetDone==false" [formGroup]="resetForm" (submit)="resetpassWord()">
 
         <div class="input1 py-3">
             <h4 class="py-2">Enter your email :</h4>
@@ -28,8 +28,8 @@
                 class=" my-1 alert alert-danger">
                 <p *ngIf="resetForm.get('newPassword')?.getError('required')" class="py-0 my-0">new password is reqiured
                 </p>
-                <p *ngIf="resetForm.get('newPassword')?.getError('pattern')" class="py-0 my-0">new password is invalid (
-                    start with A-Z + any 6 digits )</p>
+                <p *ngIf="resetForm.get('newPassword')?.getError('pattern')" class="py-0 my-0">
+                    ( Password must be at least 6 chars start with capital letter + any 5 digits )</p>
             </div>
 
 
@@ -54,19 +54,17 @@
 
 
 
-    <div *ngIf="resetDone==false" class="navigators d-flex justify-content-center align-items-center flex-column">
+    <div *ngIf="resetDone" class="navigators d-flex justify-content-center align-items-center flex-column">
 
         <p class="text-success lead text-center"> Your password has been changed successfully <i
-            class="fa-solid fa-check"></i>
-    </p>
+                class="fa-solid fa-check"></i>
+        </p>
 
         <button routerLink="/login" class="btn-main p-3 mx-auto d-block">
-            Go to Login page 
+            Go to Login page
         </button>
 
     </div>
 
 
 </section>
-
-

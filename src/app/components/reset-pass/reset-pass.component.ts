@@ -16,7 +16,7 @@ export class ResetPassComponent {
   resetForm: FormGroup = this._FormBuilder.group({
 
     email: ["", [Validators.required, Validators.email]],
-    newPassword: ["", [Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{6,10}$/)]],
+    newPassword: ["", [Validators.required, Validators.pattern(/^[A-Z][a-zA-Z0-9]{6,}$/)]],
 
   })
 
