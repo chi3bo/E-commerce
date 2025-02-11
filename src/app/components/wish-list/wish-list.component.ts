@@ -15,6 +15,7 @@ export class WishListComponent implements OnInit {
   wishCount: number = 0
   loadingFlag: boolean = false
   noItems:boolean = false
+  errorMsg:boolean = false
 
 
 
@@ -67,6 +68,7 @@ export class WishListComponent implements OnInit {
         console.log(response);
         this.whishItems = response.data
         this.wishCount = response.count
+        this.errorMsg = false
         if(this.whishItems.length == 0){ this.noItems= true}
         else { this.noItems= false } ;
 
@@ -74,6 +76,8 @@ export class WishListComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+        this.errorMsg = true
+
       }
     })
   }

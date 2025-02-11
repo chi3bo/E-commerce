@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   cartItems: cartItem[] = []
   TotalPrice:number = 0
   noItems:boolean = false
-
+  errorMsg:boolean = false
 
   removeItem(itemId: string) {
     this._CartService.deleteItem(itemId).subscribe({
@@ -64,12 +64,16 @@ export class CartComponent implements OnInit {
         this.cartItems = response.data.products
         this.TotalPrice = response.data.totalCartPrice
         console.log(this.cartItems.length);
-        if (this.cartItems.length == 0){ this.noItems= true }
+        this.errorMsg = false
+        if (this.cartItems.length == 0){
+           this.noItems= true 
+          }
         else { this.noItems= false }
       },
 
       error: (err) => {
         console.log(err);
+        this.errorMsg = true
       }
     })
   }

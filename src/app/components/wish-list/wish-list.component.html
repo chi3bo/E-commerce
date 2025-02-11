@@ -57,6 +57,18 @@
             <span routerLink="/products" class=" text-main cursor-pointer text-decoration-underline"> products </span>
         </p>
     </div>
+    
+    <div *ngIf="errorMsg" class="noItems min-70">
+        <div class="w-25">
+            <img src="./assets/images/error.svg" class="w-100">
+        </div>
+
+        <p  class="sorryMsg fw-bolder w-50 text-center">It seems there is an error, <br> please try
+            <span routerLink="/login" class=" text-main cursor-pointer text-decoration-underline"> logging in
+            </span>
+            again
+        </p>
+    </div>
 
 
 
