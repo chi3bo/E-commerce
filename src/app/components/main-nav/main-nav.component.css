@@ -1,0 +1,20 @@
+li .social-icon  {
+    transition: all .2s;
+    border-radius: 6px;
+    padding-block: 4px;
+    margin-inline: 2px;
+}
+
+.social-icon:hover {
+    scale: 1.2;
+    background-color: var(--main-color);
+}
+.cart-icon{
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: all .2s;
+}
+.cart-icon:hover{
+    border: 3px solid var(--main-color) ;
+    background-color: #fff;
+}

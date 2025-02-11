@@ -6,7 +6,8 @@ ul.navbar-nav {
 
 li .social-icon  {
     transition: all .3s;
-    border-radius: 4px;
+    border-radius: 6px;
+    margin-inline: 4px;
 }
 
 .social-icon:hover {
