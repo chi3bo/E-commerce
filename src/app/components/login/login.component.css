@@ -1,7 +1,10 @@
 .forgot:hover {
-    color: rgb(120, 200, 0);
+    color: rgb(0, 0, 0);
 }
 
 .forgot{
-    transition: color .3s;
+    transition: color .15s;
+    color: rgb(120, 194, 10);
+    font-size: 18px;
+    text-decoration: underline;
 }
